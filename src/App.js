@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import {
-  Button,
-  Grid,
-  Paper,
-  makeStyles,
-  Tooltip,
-  Divider,
-  TextField,
-  ButtonGroup,
-} from "@material-ui/core";
+import { Button, Grid, Paper, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,9 +20,7 @@ const DrumPad = ({ drumKey, song, handleClick, url }) => {
       id={song}
       onClick={handleClick(drumKey, song)}
       style={{
-        padding: "7%",
-        marginRight: "5%",
-        marginLeft: "10%",
+        padding: "20%",
       }}
     >
       {drumKey}
@@ -41,7 +30,7 @@ const DrumPad = ({ drumKey, song, handleClick, url }) => {
 };
 
 function App() {
-  const [title, setTitle] = useState("TEST");
+  const [title, setTitle] = useState("Sound titile will appear here");
   const [drumPads, setDrumPad] = useState([
     {
       key: "Q",
@@ -245,14 +234,16 @@ function App() {
               <Button onClick={changeLibrary2}>Library2</Button>
             </div>
           </Grid>
-          <Grid container direction="rows" item style={{ textAlign: "center" }}>
+          <Grid container direction="rows" style={{ textAlign: "center" }}>
             {drumPads.map((item) => (
-              <DrumPad
-                song={item.song}
-                drumKey={item.key}
-                url={item.url}
-                handleClick={handleAudio}
-              />
+              <Grid item xs={4}>
+                <DrumPad
+                  song={item.song}
+                  drumKey={item.key}
+                  url={item.url}
+                  handleClick={handleAudio}
+                />
+              </Grid>
             ))}
           </Grid>
           <div>
